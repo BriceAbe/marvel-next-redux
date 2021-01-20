@@ -1,0 +1,52 @@
+.container {
+  width: 100%;
+  height: 600px;
+
+  display: flex;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  /* background-color: yellow; */
+}
+.infoLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 600px;
+
+  background-color: black;
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.infoRigth {
+  display: flex;
+  width: 80%;
+  height: 600px;
+  object-fit: contain;
+}
+
+.mask {
+  position: absolute;
+  width: 80%;
+  height: 600px;
+  object-fit: contain;
+  background-color: orange;
+  background: linear-gradient(90deg, #000, hsla(0, 0%, 100%, 0) 40%);
+  z-index: 1;
+}
+.mask2 {
+  position: absolute;
+  width: 80%;
+  height: 400px;
+  object-fit: contain;
+  background-color: orange;
+  background: linear-gradient(-90deg, #000, hsla(0, 0%, 100%, 0) -80%);
+  z-index: 1;
+}
