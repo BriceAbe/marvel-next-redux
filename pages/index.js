@@ -3,16 +3,29 @@ import Head from "next/head";
 import axios from "axios";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-import ReactPaginate from "react-paginate-next";
+
 import Header from "../Components/Header";
 import Banner from "../Components/Banner";
 import Body from "../Components/Body";
+import Paginate from "../Components/Paginate";
 
-export default function Home({ data }) {
+import { useRouter } from "next/router";
+export default function Home({ data, random }) {
+  const router = useRouter();
+
   const image =
-    data.data.results[21].thumbnail.path +
+    data.data.results[random].thumbnail.path +
     "." +
-    data.data.results[20].thumbnail.extension;
+    data.data.results[random].thumbnail.extension;
+
+  const history = (e) => {
+    router.push("/characters/[characters]", `/characters/${e}`);
+  };
+
+  const historyCharacter = (id) => {
+    router.push("/character/[character]", `/character/${id}`);
+  };
+
   return (
     <>
       <Head>
@@ -20,41 +33,37 @@ export default function Home({ data }) {
       </Head>
 
       <Header />
-      <Banner image={image} info={data.data.results[20]} />
+      <Banner image={image} info={data.data.results[random]} />
 
-      <Body />
+      <Paginate history={history} />
+
+      <Body data={data} />
       <div>
         {/* <Link href="/contact">
           <button> contact</button>
         </Link> */}
-
-        {/* <ReactPaginate
-          previousLabel={"<"}
-          nextLabel={">"}
-          pageCount={60}
-          pageRangeDisplayed={9}
-          marginPagesDisplayed={1}
-          onPageChange={(e) => console.log(e.selected)}
-          containerClassName={"pagination"}
-          pageClassName={"paginateli"}
-          // activeClassName={"active"}
-        /> */}
       </div>
     </>
   );
 }
 export async function getServerSideProps(context) {
+  function getRandomArbitrary(min, max) {
+    return Number((Math.random() * (max - min) + min).toFixed(0));
+  }
+  const random = getRandomArbitrary(0, 99);
+
   const { data } = await axios.post(
     "https://marvel-backendbybrice.herokuapp.com/allcharacters",
     {
       limit: 100,
-      offset: 100,
+      offset: 0,
     }
   );
-  console.log(data);
+
   return {
     props: {
       data,
+      random,
     },
   };
 }

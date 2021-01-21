@@ -21,6 +21,7 @@ ul.pagination {
   list-style-type: none;
   width: 600px;
   align-items: center;
+  color: white;
 }
 
 .paginateli {

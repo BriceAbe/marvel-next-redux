@@ -1,40 +1,43 @@
 import React from "react";
 import axios from "axios";
-import ReactPaginate from "react-paginate-next";
+import Head from "next/head";
 import { useRouter } from "next/router";
+import Header from "../../Components/Header";
 
-const characters = ({ data }) => {
+import Body from "../../Components/Body";
+import Paginate from "../../Components/Paginate";
+import Banner from "../../Components/Banner";
+
+const characters = ({ data, random }) => {
   const router = useRouter();
-  const donnees = data.data.results;
-
+  const image =
+    data.data.results[random].thumbnail.path +
+    "." +
+    data.data.results[random].thumbnail.extension;
   const history = (e) => {
     router.push("/characters/[characters]", `/characters/${e}`);
   };
   return (
-    <div>
-      <ul>
-        {donnees.map((elem) => (
-          <li>
-            {elem.name} <p>{elem.id}</p>
-          </li>
-        ))}
-      </ul>
+    <>
+      <Head>
+        <title>Marvel</title>
+      </Head>
 
-      <ReactPaginate
-        previousLabel={"<"}
-        nextLabel={">"}
-        pageCount={60}
-        pageRangeDisplayed={9}
-        marginPagesDisplayed={1}
-        onPageChange={(e) => history(e.selected)}
-        containerClassName={"pagination"}
-        pageClassName={"paginateli"}
-      />
-    </div>
+      <Header />
+      <Banner image={image} info={data.data.results[random]} />
+
+      <Paginate history={history} />
+
+      <Body data={data} />
+    </>
   );
 };
 
 export async function getServerSideProps(context) {
+  function getRandomArbitrary(min, max) {
+    return Number((Math.random() * (max - min) + min).toFixed(0));
+  }
+  const random = getRandomArbitrary(0, 99);
   const offset = context.query.characters * 100;
   const { data } = await axios.post(
     "https://marvel-backendbybrice.herokuapp.com/allcharacters",
@@ -47,6 +50,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       data,
+      random,
     },
   };
 }

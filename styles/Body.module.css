@@ -3,13 +3,16 @@
   height: 100%;
   display: flex;
   justify-content: center;
+  background-color: #151515;
 }
 
 .bodyCard {
   width: 1200px;
   height: 100vh;
   display: flex;
-  background-color: yellow;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #151515;
 }
 
 .image {
@@ -46,14 +49,5 @@
   object-fit: contain;
   background-color: orange;
   background: linear-gradient(90deg, #000, hsla(0, 0%, 100%, 0) 40%);
-  z-index: 1;
-}
-.mask2 {
-  position: absolute;
-  width: 80%;
-  height: 400px;
-  object-fit: contain;
-  background-color: orange;
-  background: linear-gradient(-90deg, #000, hsla(0, 0%, 100%, 0) -80%);
   z-index: 1;
 }
