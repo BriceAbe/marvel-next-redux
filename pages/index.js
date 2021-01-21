@@ -37,7 +37,7 @@ export default function Home({ data, random }) {
 
       <Paginate history={history} />
 
-      <Body data={data} />
+      <Body data={data} historyCharacter={historyCharacter} />
       <div>
         {/* <Link href="/contact">
           <button> contact</button>

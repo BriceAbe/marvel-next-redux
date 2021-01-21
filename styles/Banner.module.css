@@ -24,6 +24,30 @@
   font-weight: bold;
 }
 
+.containerTitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.title {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.description {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  font-size: 12px;
+}
 .infoRigth {
   display: flex;
   width: 80%;

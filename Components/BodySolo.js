@@ -1,22 +1,23 @@
 import React from "react";
 import styles from "../styles/Body.module.css";
-import Card from "./Card";
+import CardSolo from "./CardSolo";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 
-const Body = ({ data, historyCharacter }) => {
-  const tabData = data.data.results;
+const BodySolo = ({ data }) => {
+  // const comics = data.comics.items;
+  console.log(data);
   const dispatch = useDispatch();
   return (
     <div className={styles.container}>
       <div className={styles.bodyCard}>
-        {tabData.map((elem, index) => (
+        {data.map((elem, index) => (
           <div
             onClick={() =>
               dispatch({ type: "GET_DATA_CHARACTER", payload: elem })
             }
           >
-            <Card key={index} data={elem} historyCharacter={historyCharacter} />
+            <CardSolo key={elem.id} data={elem} />
           </div>
         ))}
       </div>
@@ -24,4 +25,4 @@ const Body = ({ data, historyCharacter }) => {
   );
 };
 
-export default Body;
+export default BodySolo;

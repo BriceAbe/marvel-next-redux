@@ -10,6 +10,7 @@ import Banner from "../../Components/Banner";
 
 const characters = ({ data, random }) => {
   const router = useRouter();
+
   const image =
     data.data.results[random].thumbnail.path +
     "." +
@@ -17,6 +18,10 @@ const characters = ({ data, random }) => {
   const history = (e) => {
     router.push("/characters/[characters]", `/characters/${e}`);
   };
+  const historyCharacter = (id) => {
+    router.push("/character/[character]", `/character/${id}`);
+  };
+
   return (
     <>
       <Head>
@@ -28,7 +33,7 @@ const characters = ({ data, random }) => {
 
       <Paginate history={history} />
 
-      <Body data={data} />
+      <Body data={data} historyCharacter={historyCharacter} />
     </>
   );
 };
