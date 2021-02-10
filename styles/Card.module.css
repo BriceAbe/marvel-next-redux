@@ -13,6 +13,7 @@
   height: 210px;
   display: flex;
   object-position: center top;
+  object-fit: cover;
 }
 
 .layer {

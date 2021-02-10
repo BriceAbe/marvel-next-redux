@@ -1,8 +1,9 @@
 .container {
-  width: 100%;
+  width: 100vw;
   height: 600px;
-
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .image {
@@ -15,7 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 60%;
   height: 600px;
 
   background-color: black;
@@ -38,6 +39,7 @@
   justify-content: center;
   align-items: center;
   margin: 20px;
+  font-size: 40px;
 }
 
 .description {
@@ -46,18 +48,18 @@
   justify-content: center;
   align-items: center;
   margin: 20px;
-  font-size: 12px;
+  font-size: 24px;
 }
 .infoRigth {
   display: flex;
-  width: 80%;
+  width: 40%;
   height: 600px;
   object-fit: contain;
 }
 
 .mask {
   position: absolute;
-  width: 80%;
+  width: 40%;
   height: 600px;
   object-fit: contain;
   background-color: orange;
@@ -66,7 +68,7 @@
 }
 .mask2 {
   position: absolute;
-  width: 80%;
+  width: 40%;
   height: 400px;
   object-fit: contain;
   background-color: orange;
