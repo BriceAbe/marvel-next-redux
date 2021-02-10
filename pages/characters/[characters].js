@@ -9,6 +9,8 @@ import Paginate from "../../Components/Paginate";
 import Banner from "../../Components/Banner";
 
 const characters = ({ data, random }) => {
+  const total = (data.data.total / 100).toFixed();
+
   const router = useRouter();
 
   const image =
@@ -31,7 +33,7 @@ const characters = ({ data, random }) => {
       <Header />
       <Banner image={image} info={data.data.results[random]} />
 
-      <Paginate history={history} />
+      <Paginate history={history} total={total} />
 
       <Body data={data} historyCharacter={historyCharacter} />
     </>

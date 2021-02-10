@@ -17,7 +17,10 @@ const Header = () => {
         <h1 className={styles.page} onClick={() => router.push("/comics/")}>
           comics
         </h1>
-        <h1 className={styles.page} onClick={() => router.push("/favoris/")}>
+        <h1
+          className={styles.page}
+          onClick={() => router.push("/favoris/favoris")}
+        >
           favoris
         </h1>
       </div>

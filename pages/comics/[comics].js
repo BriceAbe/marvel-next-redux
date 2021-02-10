@@ -18,7 +18,7 @@ const comics = ({ data, random }) => {
   // const history = (e) => {
   //   router.push("/comic/[comic]", `/comic/${e}`);
   // };
-
+  const total = (data.data.total / 100).toFixed();
   const image =
     data.data.results[random].thumbnail.path +
     "." +
@@ -37,7 +37,7 @@ const comics = ({ data, random }) => {
       <Header />
       <Banner image={image} info={data.data.results[random]} />
 
-      <Paginate history={history} />
+      <Paginate history={history} total={total} />
 
       <Body data={data} historyCharacter={historyCharacter} />
     </>

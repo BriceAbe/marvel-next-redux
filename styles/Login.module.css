@@ -1,0 +1,79 @@
+.containerLogin {
+  width: 500px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  z-index: 1;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  object-position: center top;
+}
+.infoLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 600px;
+
+  background-color: black;
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.containerTitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.title {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  font-size: 40px;
+}
+
+.description {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  font-size: 24px;
+}
+.infoRigth {
+  display: flex;
+  width: 40%;
+  height: 600px;
+  object-fit: contain;
+}
+
+.mask {
+  position: absolute;
+  width: 40%;
+  height: 600px;
+  object-fit: contain;
+  background-color: orange;
+  background: linear-gradient(90deg, #000, hsla(0, 0%, 100%, 0) 40%);
+  z-index: 1;
+}
+.mask2 {
+  position: absolute;
+  width: 40%;
+  height: 400px;
+  object-fit: contain;
+  background-color: orange;
+  background: linear-gradient(-90deg, #000, hsla(0, 0%, 100%, 0) -80%);
+  z-index: 1;
+}

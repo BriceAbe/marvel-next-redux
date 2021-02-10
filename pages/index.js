@@ -10,6 +10,7 @@ import Body from "../Components/Body";
 import Paginate from "../Components/Paginate";
 
 import { useRouter } from "next/router";
+import Login from "../Components/Login";
 export default function Home({ data, random }) {
   const total = (data.data.total / 100).toFixed();
 
@@ -35,6 +36,7 @@ export default function Home({ data, random }) {
       </Head>
 
       <Header />
+
       <Banner image={image} info={data.data.results[random]} />
 
       <Paginate history={history} total={total} />
