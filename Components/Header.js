@@ -1,7 +1,9 @@
 import React from "react";
+import { useRouter } from "next/router";
 import styles from "../styles/Header.module.css";
 
 const Header = () => {
+  const router = useRouter();
   return (
     <div className={styles.container}>
       <div className={styles.containerMiddle}>
@@ -9,9 +11,15 @@ const Header = () => {
       </div>
 
       <div className={styles.containerPage}>
-        <h1 className={styles.page}>characters</h1>
-        <h1 className={styles.page}>comics</h1>
-        <h1 className={styles.page}>favoris</h1>
+        <h1 className={styles.page} onClick={() => router.push("/")}>
+          characters
+        </h1>
+        <h1 className={styles.page} onClick={() => router.push("/comics/")}>
+          comics
+        </h1>
+        <h1 className={styles.page} onClick={() => router.push("/favoris/")}>
+          favoris
+        </h1>
       </div>
     </div>
   );

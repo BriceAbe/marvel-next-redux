@@ -13,8 +13,6 @@ const character = ({ data }) => {
   const dataCharacter = useSelector((state) => state.dataCharacter);
 
   const x = useSelector((state) => state);
-  console.log(dataCharacter);
-  console.log(x);
 
   const image =
     dataCharacter.thumbnail.path + "." + dataCharacter.thumbnail.extension;

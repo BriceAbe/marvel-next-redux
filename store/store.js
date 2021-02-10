@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from "redux";
 import character from "../pages/character/[character]";
-import characterReducer from "../reducers/characterReducer";
+import marvelReducer from "../reducers/marvelReducer";
 
-const store = createStore(characterReducer);
+const store = createStore(marvelReducer);
 
 export default store;

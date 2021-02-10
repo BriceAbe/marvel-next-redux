@@ -3,9 +3,7 @@ import axios from "axios";
 import ReactPaginate from "react-paginate-next";
 import { useRouter } from "next/router";
 import Head from "next/head";
-
 import Header from "../../Components/Header";
-
 import Body from "../../Components/Body";
 import Paginate from "../../Components/Paginate";
 import Banner from "../../Components/Banner";
@@ -17,7 +15,7 @@ const index = ({ data, random }) => {
     "." +
     data.data.results[random].thumbnail.extension;
   const router = useRouter();
-  console.log(data);
+
   const history = (e) => {
     router.push("/comics/[comics]", `/comics/${e}`);
   };
@@ -37,7 +35,6 @@ const index = ({ data, random }) => {
       <Paginate history={history} total={total} />
 
       <Body data={data} historyCharacter={historyCharacter} />
-      <div></div>
     </>
   );
 };

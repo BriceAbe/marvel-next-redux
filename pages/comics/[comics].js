@@ -1,35 +1,46 @@
 import React from "react";
 import axios from "axios";
-import ReactPaginate from "react-paginate-next";
+import Head from "next/head";
+
 import { useRouter } from "next/router";
+
+import Header from "../../Components/Header";
+
+import Body from "../../Components/Body";
+import Paginate from "../../Components/Paginate";
+import Banner from "../../Components/Banner";
 
 const comics = ({ data, random }) => {
   const router = useRouter();
-  const total = (data.data.total / 100).toFixed();
-  const donnees = data.data.results;
+  // const total = (data.data.total / 100).toFixed();
+  // const donnees = data.data.results;
 
+  // const history = (e) => {
+  //   router.push("/comic/[comic]", `/comic/${e}`);
+  // };
+
+  const image =
+    data.data.results[random].thumbnail.path +
+    "." +
+    data.data.results[random].thumbnail.extension;
   const history = (e) => {
-    router.push("/comic/[comic]", `/comic/${e}`);
+    router.push("/comics/[comics]", `/comics/${e}`);
+  };
+  const historyCharacter = (id) => {
+    router.push("/comic/[comic]", `/comic/${id}`);
   };
   return (
-    <div>
-      <ul>
-        {donnees.map((elem) => (
-          <li>{elem.title}</li>
-        ))}
-      </ul>
+    <>
+      <Head>
+        <title>Comics</title>
+      </Head>
+      <Header />
+      <Banner image={image} info={data.data.results[random]} />
 
-      <ReactPaginate
-        previousLabel={"<"}
-        nextLabel={">"}
-        pageCount={total}
-        pageRangeDisplayed={9}
-        marginPagesDisplayed={1}
-        onPageChange={(e) => history(e.selected)}
-        containerClassName={"pagination"}
-        pageClassName={"paginateli"}
-      />
-    </div>
+      <Paginate history={history} />
+
+      <Body data={data} historyCharacter={historyCharacter} />
+    </>
   );
 };
 
@@ -38,7 +49,7 @@ export async function getServerSideProps(context) {
     return Number((Math.random() * (max - min) + min).toFixed(0));
   }
   const random = getRandomArbitrary(0, 99);
-  const offset = context.query.characters * 100;
+  const offset = context.query.comics * 100;
   const { data } = await axios.post(
     "https://marvel-backendbybrice.herokuapp.com/comicsPage",
     {
