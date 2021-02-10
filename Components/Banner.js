@@ -5,7 +5,7 @@ const Banner = ({ image, info }) => {
     <div className={styles.container}>
       <div className={styles.infoLeft}>
         <div className={styles.containerTitle}>
-          <p className={styles.title}>{info.name}</p>
+          <p className={styles.title}>{info.name ? info.name : info.title}</p>
           <p className={styles.description}>{info.description}</p>
         </div>
       </div>

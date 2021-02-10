@@ -3,13 +3,13 @@ import axios from "axios";
 import ReactPaginate from "react-paginate-next";
 import { useRouter } from "next/router";
 
-const comics = ({ data }) => {
+const comics = ({ data, random }) => {
   const router = useRouter();
   const total = (data.data.total / 100).toFixed();
   const donnees = data.data.results;
 
   const history = (e) => {
-    router.push("/comics/[comics]", `/comics/${e}`);
+    router.push("/comic/[comic]", `/comic/${e}`);
   };
   return (
     <div>
@@ -34,6 +34,10 @@ const comics = ({ data }) => {
 };
 
 export async function getServerSideProps(context) {
+  function getRandomArbitrary(min, max) {
+    return Number((Math.random() * (max - min) + min).toFixed(0));
+  }
+  const random = getRandomArbitrary(0, 99);
   const offset = context.query.characters * 100;
   const { data } = await axios.post(
     "https://marvel-backendbybrice.herokuapp.com/comicsPage",
@@ -45,6 +49,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       data,
+      random,
     },
   };
 }

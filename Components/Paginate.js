@@ -5,14 +5,14 @@ import Link from "next/link";
 import styles from "../styles/Paginate.module.css";
 import ReactPaginate from "react-paginate-next";
 
-const Paginate = ({ history }) => {
+const Paginate = ({ history, total }) => {
   return (
     <div className={styles.container}>
       <div className={styles.containerBody}>
         <ReactPaginate
           previousLabel={"Previous"}
           nextLabel={"Next"}
-          pageCount={60}
+          pageCount={total}
           pageRangeDisplayed={9}
           marginPagesDisplayed={1}
           onPageChange={(e) => history(e.selected)}

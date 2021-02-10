@@ -6,11 +6,32 @@ import { useDispatch } from "react-redux";
 
 const BodySolo = ({ data }) => {
   // const comics = data.comics.items;
-  console.log(data);
+
   const dispatch = useDispatch();
   return (
     <div className={styles.container}>
       <div className={styles.bodyCard}>
+        <button
+          onClick={() =>
+            dispatch({
+              type: "vente_chemise_one",
+              payload: { forOne: 1, forFive: 5 },
+            })
+          }
+        >
+          ACHETER CHEMISE par un
+        </button>
+
+        <button
+          onClick={() =>
+            dispatch({
+              type: "vente_chemise_five",
+              payload: { forOne: 1, forFive: 5 },
+            })
+          }
+        >
+          ACHETER CHEMISE par 5
+        </button>
         {data.map((elem, index) => (
           <div
             onClick={() =>

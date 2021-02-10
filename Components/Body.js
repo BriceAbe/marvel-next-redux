@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 const Body = ({ data, historyCharacter }) => {
   const tabData = data.data.results;
   const dispatch = useDispatch();
+
   return (
     <div className={styles.container}>
       <div className={styles.bodyCard}>

@@ -11,6 +11,8 @@ import Paginate from "../Components/Paginate";
 
 import { useRouter } from "next/router";
 export default function Home({ data, random }) {
+  const total = (data.data.total / 100).toFixed();
+
   const router = useRouter();
 
   const image =
@@ -35,14 +37,10 @@ export default function Home({ data, random }) {
       <Header />
       <Banner image={image} info={data.data.results[random]} />
 
-      <Paginate history={history} />
+      <Paginate history={history} total={total} />
 
       <Body data={data} historyCharacter={historyCharacter} />
-      <div>
-        {/* <Link href="/contact">
-          <button> contact</button>
-        </Link> */}
-      </div>
+      <div></div>
     </>
   );
 }
